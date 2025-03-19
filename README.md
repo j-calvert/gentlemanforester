@@ -1,5 +1,7 @@
 # Gentleman Forester
 
+A static website for https://gentlemanforester.[com|org] for now
+
 Are you a small forest land owner?  Are you uncertain how to respond when someone asks “What are you going to do with your land”?  We are too.
 
 Globally speaking, people have cleared a lot of forest, resulting in plummeting numbers of non-livestock land mammals, primarily due to loss of habitat.
