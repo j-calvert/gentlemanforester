@@ -10,19 +10,25 @@ body {
 }
 
 /* Optional: Add a semi-transparent background for readability */
-.container {
-    background: rgba(255, 255, 255, 0.8); /* White with slight transparency */
+/* .container {
+    background: rgba(255, 255, 255, 0.8);
     padding: 20px;
     border-radius: 10px;
-}
+} 
+*/
 h1,
 h2,
 h3 {
-    color: #222;
+    color: #eac1c1;
+}
+
+body {
+    color: #eac1c1;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
 }
 
 a {
-    color: #0077cc;
+    color: #5ebcff;
     text-decoration: none;
 }
 
