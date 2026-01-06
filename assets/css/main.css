@@ -2667,7 +2667,14 @@ input, select, textarea {
 		}
 
 			.image.fit img {
-				width: 100%;
+				/* Don't upscale images beyond their natural resolution.
+				   Show at intrinsic size, but shrink if container is smaller. */
+				width: auto;
+				max-width: 100%;
+				height: auto;
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
 			}
 
 		.image.main {
@@ -2677,7 +2684,13 @@ input, select, textarea {
 		}
 
 			.image.main img {
-				width: 100%;
+				/* Use intrinsic size but allow shrinking to fit container; avoid upscaling */
+				width: auto;
+				max-width: 100%;
+				height: auto;
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
 			}
 
 /* List */
@@ -4911,12 +4924,59 @@ input, select, textarea {
 				border-radius: 0;
 			}
 
+			/* Prevent cropping for images explicitly marked as no-crop */
+			.spotlight.style1 .image img.no-crop {
+				-moz-object-fit: contain;
+				-webkit-object-fit: contain;
+				-ms-object-fit: contain;
+				object-fit: contain;
+				-moz-object-position: center;
+				-webkit-object-position: center;
+				-ms-object-position: center;
+				object-position: center;
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				border-radius: 0;
+			}
+
 		@media screen and (max-width: 1680px) {
 
 			.spotlight.style1 .content {
 				padding: 5rem 5rem 3rem 5rem ;
 			}
 
+		}
+
+		/* When a spotlight image container is explicitly marked no-bg,
+		   make its background transparent so `object-fit: contain`
+		   doesn't reveal the grey tint behind the image. */
+		.spotlight .image.no-bg {
+			background-color: transparent !important;
+			border-color: transparent !important;
+		}
+
+		/* On narrow viewports, keep no-crop images in normal flow so they
+		   determine container height and remain visible. */
+		@media screen and (max-width: 980px) {
+			.spotlight .image img.no-crop {
+				position: relative !important;
+				width: 100% !important;
+				height: auto !important;
+				object-fit: contain !important;
+			}
+		}
+
+		@media screen and (max-width: 736px) {
+			.spotlight .image img.no-crop {
+				position: relative !important;
+				width: 100% !important;
+				height: auto !important;
+				object-fit: contain !important;
+			}
 		}
 
 		@media screen and (max-width: 1280px) {
